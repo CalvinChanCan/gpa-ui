@@ -6,6 +6,7 @@ import {
 
 import './App.css';
 import Home from "./pages/Home/Home";
+import SignIn from "./pages/SignIn/SignIn";
 
 const Layout = () => {
     return (
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home/>
+            },
+            {
+                path: "/signin",
+                element: <SignIn/>
             }
         ]
     }
