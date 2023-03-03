@@ -7,6 +7,7 @@ import {
 import './App.css';
 import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn/SignIn";
+import Accounts from "./pages/Accounts/Accounts";
 
 const Layout = () => {
     return (
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: "/signin",
                 element: <SignIn/>
+            },
+            {
+                path: "/accounts",
+                element: <Accounts/>
             }
         ]
     }
