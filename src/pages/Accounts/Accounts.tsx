@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { makeRequest } from '../../utils/makeRequest';
+import {Account} from "../../types/account";
 
 const Accounts = () => {
-    const [accounts, setAccounts] = useState([]);
+    const [accounts, setAccounts] = useState<Account[]>([]);
 
     useEffect(() => {
         const fetchAccounts = async () => {
             const res = await makeRequest.get('/api/users/1/accounts');
             console.log('res', res)
-            setAccounts(res.data);
+            setAccounts(res.data as Account[]);
         };
 
         fetchAccounts();
