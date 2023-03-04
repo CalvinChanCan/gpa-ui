@@ -29,7 +29,7 @@ const SignIn = () => {
                 <Container component="main" maxWidth="xs">
                     <CssBaseline/>
                     <Box sx={{marginTop: 8, padding: 3}}>
-                        <Typography component="h1" variant="h3">
+                        <Typography component="h1" variant="h3" align="center">
                             GPA
                         </Typography>
                         <Box component="form" onSubmit={(event) => handleSubmit(event)}>
