@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { makeRequest } from '../../utils/makeRequest';
+import React, {useState, useEffect} from 'react';
+import {makeRequest} from '../../utils/makeRequest';
 import {Account} from "../../types/account";
+import AccountCard from "../../components/AccountCard/AccountCard";
 
 const Accounts = () => {
     const [accounts, setAccounts] = useState<Account[]>([]);
@@ -20,9 +21,7 @@ const Accounts = () => {
         <div className="account">
             <h1>Accounts</h1>
             {accounts.map((account) => (
-                <div>
-
-                </div>
+                <AccountCard account={account} key={account.id}/>
             ))}
         </div>
     );
