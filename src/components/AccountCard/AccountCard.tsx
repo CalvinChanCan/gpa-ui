@@ -14,7 +14,7 @@ const AccountCard = ({account}: AccountCardProps) => {
     const formattedAccountNumber = account.account_id.replace(/\s+/g, '').match(/.{1,4}/g)?.join(' ');
 
     return (
-        <Card sx={{width: 400, marginBottom: 2}}>
+        <Card sx={{width: "350px", margin: '4px'}}>
             <CardContent>
                 <Typography variant="h5" component="h2" align="left">
                     Account Number

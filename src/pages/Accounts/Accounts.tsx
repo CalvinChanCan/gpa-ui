@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {makeRequest} from '../../utils/makeRequest';
 import {Account} from "../../types/account";
 import AccountCard from "../../components/AccountCard/AccountCard";
+import './Accounts.scss';
 
 const Accounts = () => {
     const [accounts, setAccounts] = useState<Account[]>([]);
@@ -18,8 +19,7 @@ const Accounts = () => {
 
 
     return (
-        <div className="account">
-            <h1>Accounts</h1>
+        <div className="account-container">
             {accounts.map((account) => (
                 <AccountCard account={account} key={account.id}/>
             ))}
