@@ -4,18 +4,25 @@ import {
     Outlet,
 } from "react-router-dom";
 
-import './App.css';
+import './App.scss';
 import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn/SignIn";
 import Accounts from "./pages/Accounts/Accounts";
+import Sidebar from "./components/Sidebar/Sidebar";
+
 
 const Layout = () => {
     return (
         <div className="app">
-            <Outlet/>
+            <div className="left">
+                <Sidebar/>
+            </div>
+            <div className="right">
+                <Outlet/>
+            </div>
         </div>
-    )
-}
+    );
+};
 
 const router = createBrowserRouter([
     {
@@ -27,18 +34,17 @@ const router = createBrowserRouter([
                 element: <Home/>
             },
             {
-                path: "/signin",
-                element: <SignIn/>
-            },
-            {
                 path: "/accounts",
                 element: <Accounts/>
             }
         ]
+    },
+    {
+        path: "/signin",
+        element: <SignIn/>
     }
 
 ])
-
 
 
 function App() {
