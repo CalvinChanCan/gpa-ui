@@ -6,8 +6,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {Card} from "@mui/material";
-import { useNavigate } from "react-router-dom";
-
+import {useNavigate} from "react-router-dom";
+import './SignIn.scss';
 
 const SignIn = () => {
     const navigate = useNavigate();
@@ -24,47 +24,50 @@ const SignIn = () => {
     };
 
     return (
-        <Card variant="outlined">
-            <Container component="main" maxWidth="xs">
-                <CssBaseline/>
-                <Box sx={{marginTop: 8, padding: 3}}>
-                    <Typography component="h1" variant="h3">
-                        GPA
-                    </Typography>
-                    <Box component="form" onSubmit={(event) => handleSubmit(event)}>
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Email Address/Username"
-                            name="email"
-                            autoComplete="email"
-                            autoFocus
-                        />
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                        />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{mt: 3, mb: 2}}
-                        >
-                            Sign In
-                        </Button>
+        <div className="signin-container">
+            <Card variant="outlined">
+                <Container component="main" maxWidth="xs">
+                    <CssBaseline/>
+                    <Box sx={{marginTop: 8, padding: 3}}>
+                        <Typography component="h1" variant="h3">
+                            GPA
+                        </Typography>
+                        <Box component="form" onSubmit={(event) => handleSubmit(event)}>
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="email"
+                                label="Email Address/Username"
+                                name="email"
+                                autoComplete="email"
+                                autoFocus
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="password"
+                                label="Password"
+                                type="password"
+                                id="password"
+                                autoComplete="current-password"
+                            />
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                sx={{mt: 3, mb: 2}}
+                            >
+                                Sign In
+                            </Button>
+                        </Box>
                     </Box>
-                </Box>
-            </Container>
-        </Card>
+                </Container>
+            </Card>
+        </div>
     );
+
 }
 
 export default SignIn;
