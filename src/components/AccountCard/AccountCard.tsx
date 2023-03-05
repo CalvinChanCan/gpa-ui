@@ -1,17 +1,25 @@
-import * as React from 'react';
-import {Card, CardContent, Typography} from '@mui/material';
+import React from 'react';
+import {Card, CardContent, Link, Typography} from '@mui/material';
 import {Account} from '../../types/account';
+import {useNavigate} from "react-router-dom";
 
 interface AccountCardProps {
     account: Account;
 }
 
 const AccountCard = ({account}: AccountCardProps) => {
+    const navigate = useNavigate();
+
     const formattedBalance = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD'
     }).format(account.balance);
     const formattedAccountNumber = account.account_id.replace(/\s+/g, '').match(/.{1,4}/g)?.join(' ');
+
+    const handleTransactionsLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+        event.preventDefault();
+        navigate('/transactions', { state: { account } });
+    };
 
     return (
         <Card sx={{width: "350px", margin: '4px'}}>
@@ -31,7 +39,9 @@ const AccountCard = ({account}: AccountCardProps) => {
                     </Typography>
                 </div>
                 <Typography variant="body2" align="right">
-                    <a href={`/account/${account.id}/transactions/`}>View Transactions</a>
+                    <Link href="#" color="primary" onClick={handleTransactionsLinkClick}>
+                        View Transactions
+                    </Link>
                 </Typography>
             </CardContent>
         </Card>
