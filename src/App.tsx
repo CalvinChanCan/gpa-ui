@@ -8,6 +8,7 @@ import './App.scss';
 import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn/SignIn";
 import Accounts from "./pages/Accounts/Accounts";
+import Transactions from "./pages/Transactions/Transactions";
 import Sidebar from "./components/Sidebar/Sidebar";
 
 
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
             {
                 path: "/accounts",
                 element: <Accounts/>
+            },
+            {
+                path: "/transactions",
+                element: <Transactions/>
             }
         ]
     },
