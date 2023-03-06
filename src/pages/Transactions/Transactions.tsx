@@ -18,8 +18,17 @@ const Transactions = () => {
 
     useEffect(() => {
         const fetchTransactions = async () => {
-            const res = await makeRequest.get('/api/users/1/transactions');
-            setTransactions(res.data as Transaction[]);
+            const response = await makeRequest.get('/api/users/1/transactions');
+
+            const transactions: Transaction[] = response.data.map((transaction: Transaction) => {
+                    return {
+                        ...transaction,
+                        amount: Number(transaction.amount)
+                    }
+                }
+            )
+
+            setTransactions(transactions);
         };
 
         if (showAll) {
@@ -30,8 +39,17 @@ const Transactions = () => {
 
     useEffect(() => {
         const fetchTransactions = async (account: Account) => {
-            const res = await makeRequest.get(`/api/accounts/${account.id}/transactions`);
-            setTransactions(res.data as Transaction[]);
+            const response = await makeRequest.get(`/api/accounts/${account.id}/transactions`);
+            const transactions: Transaction[] = response.data.map((transaction: Transaction) => {
+                    return {
+                        ...transaction,
+                        amount: Number(transaction.amount)
+                    }
+                }
+            )
+
+            setTransactions(transactions);
+
         };
 
         if (account) {
