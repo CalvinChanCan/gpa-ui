@@ -66,7 +66,7 @@ const Transactions = () => {
                                 <TableCell
                                     sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{transaction.transaction_type}</TableCell>
                                 <TableCell
-                                    sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{transaction.account_id}</TableCell>
+                                    sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{transaction.account.account_id}</TableCell>
                                 <TableCell
                                     sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{transaction.notes}</TableCell>
                                 <TableCell>{transaction.amount}</TableCell>
