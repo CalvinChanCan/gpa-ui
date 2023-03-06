@@ -1,27 +1,45 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import {Card} from "@mui/material";
+import {Alert, Card, Snackbar} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import './SignIn.scss';
+import {fetchData} from "../../utils/makeRequest";
 
 const SignIn = () => {
+    const [isError, setIsError] = useState<boolean>(false);
     const navigate = useNavigate();
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         const email = formData.get('email') as string;
         const password = formData.get('password') as string;
-        console.log(email, password);
 
-        navigate("/accounts");
+        const data = {email, password};
+        const response = await fetchData('/signin/', 'POST', data);
+
+        if (response.ok) {
+            const result = await response.json();
+
+            localStorage.setItem('user', JSON.stringify(result.user));
+            navigate("/accounts");
+        } else {
+            // If sign in fails, show error message
+            setIsError(true)
+
+        }
 
     };
+
+    useEffect(() => {
+
+
+    }, [isError]);
 
     return (
         <div className="signin-container">
@@ -65,6 +83,18 @@ const SignIn = () => {
                     </Box>
                 </Container>
             </Card>
+            <Snackbar
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                }}
+                open={isError}
+                autoHideDuration={3000}
+                onClose={() => setIsError(false)}
+                message="Error logging in"
+            >
+                <Alert onClose={() => setIsError(false)} severity="error">This is an error message!</Alert>
+            </Snackbar>
         </div>
     );
 
