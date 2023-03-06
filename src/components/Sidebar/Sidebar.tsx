@@ -1,11 +1,19 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {List, ListItem, Divider} from '@mui/material';
 import './Sidebar.scss';
 import Button from "@mui/material/Button";
 import {useNavigate} from "react-router-dom";
+import {getUserFromLocalStorage} from "../../utils/localStorageUtils";
+import {User} from "../../types/user";
 
 export default function Sidebar() {
     const navigate = useNavigate();
+    const [currentUser, setCurrentUser] = useState<User | null>(null)
+
+    useEffect(() => {
+        const user = getUserFromLocalStorage()
+        setCurrentUser(user)
+    }, [])
 
     const handleTransactionsClick = () => {
         navigate('/transactions?show=all');
@@ -18,7 +26,7 @@ export default function Sidebar() {
     return (
         <div className="sidebar-container">
             <div className="sidebar">
-                <h3>Hi, Username!</h3>
+                <h3>Hi, {currentUser?.first_name}!</h3>
                 <Divider/>
                 <List>
                     <ListItem>
