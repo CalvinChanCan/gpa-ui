@@ -47,22 +47,28 @@ const Transactions = () => {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>ID</TableCell>
-                            <TableCell>Date</TableCell>
-                            <TableCell>Transaction Type</TableCell>
-                            <TableCell>Account ID</TableCell>
-                            <TableCell>Notes</TableCell>
+                            <TableCell sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>ID</TableCell>
+                            <TableCell sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>Date</TableCell>
+                            <TableCell sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>Transaction
+                                Type</TableCell>
+                            <TableCell sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>Account ID</TableCell>
+                            <TableCell sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>Notes</TableCell>
                             <TableCell>Amount</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {transactions.map((transaction) => (
                             <TableRow key={transaction.id}>
-                                <TableCell>{transaction.id}</TableCell>
-                                <TableCell>{transaction.transaction_date}</TableCell>
-                                <TableCell>{transaction.transaction_type}</TableCell>
-                                <TableCell>{transaction.account_id}</TableCell>
-                                <TableCell>{transaction.notes}</TableCell>
+                                <TableCell
+                                    sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{transaction.id}</TableCell>
+                                <TableCell
+                                    sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{transaction.transaction_date}</TableCell>
+                                <TableCell
+                                    sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{transaction.transaction_type}</TableCell>
+                                <TableCell
+                                    sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{transaction.account_id}</TableCell>
+                                <TableCell
+                                    sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{transaction.notes}</TableCell>
                                 <TableCell>{transaction.amount}</TableCell>
                             </TableRow>
                         ))}
