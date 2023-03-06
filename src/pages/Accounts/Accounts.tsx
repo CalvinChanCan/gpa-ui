@@ -21,9 +21,13 @@ const Accounts = () => {
 
     return (
         <div className="account-container">
-            {accounts.map((account) => (
-                <AccountCard account={account} key={account.id}/>
-            ))}
+            {accounts.length > 0 ? (
+                accounts.map((account) => (
+                    <AccountCard account={account} key={account.id}/>
+                ))
+            ) : (
+                <p>No accounts to display</p>
+            )}
         </div>
     );
 };
