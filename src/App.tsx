@@ -5,7 +5,6 @@ import {
 } from "react-router-dom";
 
 import './App.scss';
-import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn/SignIn";
 import Accounts from "./pages/Accounts/Accounts";
 import Transactions from "./pages/Transactions/Transactions";
@@ -28,12 +27,12 @@ const Layout = () => {
 const router = createBrowserRouter([
     {
         path: "/",
+        element: <SignIn/>
+    },
+    {
+        path: "/",
         element: <Layout/>,
         children: [
-            {
-                path: "/",
-                element: <Home/>
-            },
             {
                 path: "/accounts",
                 element: <Accounts/>
@@ -44,10 +43,6 @@ const router = createBrowserRouter([
             }
         ]
     },
-    {
-        path: "/signin",
-        element: <SignIn/>
-    }
 
 ])
 
