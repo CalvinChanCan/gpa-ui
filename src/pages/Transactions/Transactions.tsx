@@ -113,7 +113,6 @@ const Transactions = () => {
         const component = () => {
             return (
                 <div className="transactions-container">
-                    <h2>Transactions for Account ID {account.account_id}</h2>
                     {renderTransactionsTable()}
                 </div>
             );
