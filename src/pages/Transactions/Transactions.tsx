@@ -6,6 +6,7 @@ import {Transaction} from "../../types/transaction";
 
 import {TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody} from '@mui/material';
 import {Account} from "../../types/account";
+import {formatDate, formatAmount, maskAccount} from '../../utils/format';
 
 const Transactions = () => {
     const location = useLocation();
@@ -80,14 +81,14 @@ const Transactions = () => {
                                 <TableCell
                                     sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{transaction.id}</TableCell>
                                 <TableCell
-                                    sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{transaction.transaction_date}</TableCell>
+                                    sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{formatDate(transaction.transaction_date)}</TableCell>
                                 <TableCell
                                     sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{transaction.transaction_type}</TableCell>
                                 <TableCell
-                                    sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{transaction.account.account_id}</TableCell>
+                                    sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{maskAccount(transaction.account.account_id)}</TableCell>
                                 <TableCell
                                     sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{transaction.notes}</TableCell>
-                                <TableCell>{transaction.amount}</TableCell>
+                                <TableCell>{formatAmount(transaction.amount, transaction.transaction_type)}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
