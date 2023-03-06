@@ -7,12 +7,14 @@ import {getUserFromLocalStorage} from "../../utils/localStorageUtils";
 
 const Accounts = () => {
     const [accounts, setAccounts] = useState<Account[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true)
 
     useEffect(() => {
         const fetchAccounts = async () => {
             const user = getUserFromLocalStorage()
             const res = await makeRequest.get(`/api/users/${user.id}/accounts/`);
             setAccounts(res.data as Account[]);
+            setIsLoading(false)
         };
 
         fetchAccounts();
@@ -21,12 +23,16 @@ const Accounts = () => {
 
     return (
         <div className="account-container">
-            {accounts.length > 0 ? (
-                accounts.map((account) => (
-                    <AccountCard account={account} key={account.id}/>
-                ))
+            {isLoading ? (
+                <p>Loading...</p>
             ) : (
-                <p>No accounts to display</p>
+                accounts.length > 0 ? (
+                    accounts.map((account) => (
+                        <AccountCard account={account} key={account.id}/>
+                    ))
+                ) : (
+                    <p>No accounts to display</p>
+                )
             )}
         </div>
     );
