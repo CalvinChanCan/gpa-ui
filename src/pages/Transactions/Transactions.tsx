@@ -59,19 +59,19 @@ const Transactions = () => {
 
     }, [account]);
 
-
+    const columnLine = {borderRight: "1px solid rgba(224, 224, 224, 1)"}
     const renderTransactionsTable = () => {
         return (
             <TableContainer component={Paper}>
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>ID</TableCell>
-                            <TableCell sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>Date</TableCell>
-                            <TableCell sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>Transaction
+                            <TableCell sx={columnLine}>ID</TableCell>
+                            <TableCell sx={columnLine}>Date</TableCell>
+                            <TableCell sx={columnLine}>Transaction
                                 Type</TableCell>
-                            <TableCell sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>Account ID</TableCell>
-                            <TableCell sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>Notes</TableCell>
+                            <TableCell sx={columnLine}>Account ID</TableCell>
+                            <TableCell sx={columnLine}>Notes</TableCell>
                             <TableCell>Amount</TableCell>
                         </TableRow>
                     </TableHead>
@@ -79,15 +79,15 @@ const Transactions = () => {
                         {transactions.map((transaction) => (
                             <TableRow key={transaction.id}>
                                 <TableCell
-                                    sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{transaction.id}</TableCell>
+                                    sx={columnLine}>{transaction.id}</TableCell>
                                 <TableCell
-                                    sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{formatDate(transaction.transaction_date)}</TableCell>
+                                    sx={columnLine}>{formatDate(transaction.transaction_date)}</TableCell>
                                 <TableCell
-                                    sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{transaction.transaction_type}</TableCell>
+                                    sx={columnLine}>{transaction.transaction_type}</TableCell>
                                 <TableCell
-                                    sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{maskAccount(transaction.account.account_id)}</TableCell>
+                                    sx={columnLine}>{maskAccount(transaction.account.account_id)}</TableCell>
                                 <TableCell
-                                    sx={{borderRight: "1px solid rgba(224, 224, 224, 1)"}}>{transaction.notes}</TableCell>
+                                    sx={columnLine}>{transaction.notes}</TableCell>
                                 <TableCell>{formatAmount(transaction.amount, transaction.transaction_type)}</TableCell>
                             </TableRow>
                         ))}
