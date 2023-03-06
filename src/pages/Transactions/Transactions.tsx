@@ -7,6 +7,7 @@ import {Transaction} from "../../types/transaction";
 import {TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody} from '@mui/material';
 import {Account} from "../../types/account";
 import {formatDate, formatAmount, maskAccount} from '../../utils/format';
+import {getUserFromLocalStorage} from "../../utils/localStorageUtils";
 
 const Transactions = () => {
     const location = useLocation();
@@ -19,7 +20,8 @@ const Transactions = () => {
 
     useEffect(() => {
         const fetchTransactions = async () => {
-            const response = await makeRequest.get('/api/users/1/transactions');
+            const user = getUserFromLocalStorage()
+            const response = await makeRequest.get(`/api/users/${user.id}/transactions/`);
 
             const transactions: Transaction[] = response.data.map((transaction: Transaction) => {
                     return {
