@@ -23,6 +23,9 @@ export default function Sidebar() {
         navigate('/accounts');
     }
 
+    const isAccountsActive = location.pathname === '/accounts';
+    const isTransactionsActive = location.pathname.startsWith('/transactions');
+
     return (
         <div className="sidebar-container">
             <div className="sidebar">
@@ -30,11 +33,12 @@ export default function Sidebar() {
                 <Divider/>
                 <List>
                     <ListItem>
-                        <Button variant="outlined" className="sidebar-button"
+                        <Button variant={isAccountsActive ? 'contained' : 'outlined'}
+                                className="sidebar-button"
                                 onClick={handleAccountsClick}>Accounts</Button>
                     </ListItem>
                     <ListItem>
-                        <Button variant="contained" className="sidebar-button"
+                        <Button variant={isTransactionsActive ? 'contained' : 'outlined'} className="sidebar-button"
                                 onClick={handleTransactionsClick}>Transactions</Button>
                     </ListItem>
                 </List>
