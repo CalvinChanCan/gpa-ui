@@ -42,7 +42,7 @@ const Transactions = () => {
 
     useEffect(() => {
         const fetchTransactions = async (account: Account) => {
-            const response = await makeRequest.get(`/api/accounts/${account.id}/transactions`);
+            const response = await makeRequest.get(`/api/accounts/${account.id}/transactions/`);
             const transactions: Transaction[] = response.data.map((transaction: Transaction) => {
                     return {
                         ...transaction,
